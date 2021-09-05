@@ -4,6 +4,8 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,19 +19,34 @@ public class Main {
             ArrayList<String> twoLines = new ArrayList<>();
             for (String line : lines){
 //                System.out.println(line);
-                String accountRegex = "BIEŻĄCY-PODMIOTY GOSP \\d{2}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s[A-Z]{3}\\s*";
-                String valueRegex = "SALDO KOŃCOWE -?\\d{0,3}\\.?\\d{0,3}\\.?\\d{0,3}\\.?\\d{0,3},\\d{2}\\s*";
+                String account = "account";
+                String value = "value";
+                String accountRegex = "BIEŻĄCY-PODMIOTY GOSP (?<" + account + ">\\d{2}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4})\\s[A-Z]{3}\\s*";
+                String valueRegex = "SALDO KOŃCOWE (?<" + value + ">-?\\d{0,3}\\.?\\d{0,3}\\.?\\d{0,3}\\.?\\d{0,3},\\d{2})\\s*";
 //                String valueRegex = "SALDO KOŃCOWE -?\\d*\\.694,05\\s*";
 //                boolean matches1 = line.matches("BIEŻĄCY-PODMIOTY GOSP \\d{2}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s[A-Z]{3}\\s*|RACHUNKI DEPOZYTOWE\\s*");
                 boolean matches1 = line.matches(accountRegex + "|" + valueRegex);
+//                Pattern pattern = Pattern.compile("");
+                Matcher matcher = Pattern.compile(accountRegex + "|" + valueRegex).matcher(line);
+                if (matcher.matches()){
+                    System.out.println(matcher.groupCount());
+                    System.out.println(matcher.group(1));
+                    System.out.println(matcher.group(2));
+//                    twoLines.add(line);
+                    if (matcher.group(account) != null){
+                        twoLines.add(matcher.group(account));
+                    }else if (matcher.group(value) != null){
+                        twoLines.add(matcher.group(value));
+                    }
+                }
 //                boolean matches1 = line.matches("BIEŻĄCY-PODMIOTY GOSP 60 1240 1040 1111 0010 8331 4138 PLN\n");
 //                boolean matches1 = line.matches("RACHUNKI DEPOZYTOWE\\s*");
 //                boolean matches1 = line.matches("\\w*\\s*\\w*\\s*");
 //                System.out.println(matches1);
-                if (matches1){
-                    twoLines.add(line);
-//                    System.out.println("*********************");
-                }
+//                if (matches1){
+//                    twoLines.add(line);
+////                    System.out.println("*********************");
+//                }
             }
             String test = "test t";
             boolean testMat = test.matches("test t");
