@@ -51,8 +51,9 @@ public class ExtractsAccountsAndAmounts<Account, Amount> {
                 System.out.println(line.toUpperCase());
                 System.out.println("pekaoMatcher " + pekaoMatcher.matches());
                 if (pekaoMatcher.matches()){
-                    ExtractingAccountAmountPair<Account, Amount> extracting = new ExtractingAccountAmountPairPekaoImp<>();
-                    pair = extracting.getCustomPair(lines);
+//                    extracting = new ExtractingAccountAmountPairPekaoImp<>();
+//                    pair = extracting.getCustomPair(lines);
+                    pair = getCustomPair(lines, new ExtractingAccountAmountPairPekaoImp<>());
                     break;
                 }
             }
@@ -61,6 +62,10 @@ public class ExtractsAccountsAndAmounts<Account, Amount> {
             e.printStackTrace();
         }
         return pair;
+    }
+
+    private CustomPair<Account, Amount> getCustomPair(String[] lines, ExtractingAccountAmountPair<Account, Amount> extracting){
+        return extracting.getCustomPair(lines);
     }
 
 }
