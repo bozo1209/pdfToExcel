@@ -1,3 +1,4 @@
+import excel.SaveAccountsAndAmountsInExcel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import pdf.ExtractsAccountsAndAmounts;
@@ -22,6 +23,8 @@ public class Main {
         ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
         extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
 
+        SaveAccountsAndAmountsInExcel<String, BigDecimal> saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel<>();
+        saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, "C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\excel\\");
 //        try(PDDocument document = PDDocument.load(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test.pdf"))) {
 //            PDFTextStripper pdfTextStripper = new PDFTextStripper();
 //            pdfTextStripper.setEndPage(1);

@@ -24,7 +24,7 @@ public class ExtractingAccountAmountPairPekaoImp<Account, Amount> implements Ext
                 if (matcher.group(account) != null){
                     pair.setAccount((Account) matcher.group(account));
                 }else if (matcher.group(amount) != null){
-                    pair.setAmount((Amount) matcher.group(amount));
+                    pair.setAmount((Amount) matcher.group(amount).replace(".", "").replace(",", "."));
                 }
             }
             if (pair.getAccount() != null && pair.getAmount() != null){
