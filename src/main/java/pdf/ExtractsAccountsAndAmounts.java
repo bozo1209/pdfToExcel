@@ -16,26 +16,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ExtractsAccountsAndAmounts<Account, Amount> {
+public class ExtractsAccountsAndAmounts {
 
 
-    public ArrayList<CustomPair<Account, Amount>> getAccountsAndAmountsList(File[] files){
-        ArrayList<CustomPair<Account, Amount>> accountsAndAmountsList = new ArrayList<>();
+    public ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList(File[] files){
+        ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = new ArrayList<>();
         for (File file : files){
             accountsAndAmountsList.add(checkBankName(file));
         }
         return accountsAndAmountsList;
     }
 
-    public void printAccountsAndAmounts(ArrayList<CustomPair<Account, Amount>> list){
+    public void printAccountsAndAmounts(ArrayList<CustomPair<String, BigDecimal>> list){
         System.out.println("*****************");
         list.forEach(System.out::println);
 //        System.out.println(list.isEmpty());
 //        System.out.println(list.get(0));
     }
 
-    private CustomPair<Account, Amount> checkBankName(File file){
-        CustomPair<Account, Amount> pair = null;
+    private CustomPair<String, BigDecimal> checkBankName(File file){
+        CustomPair<String, BigDecimal> pair = null;
         try(PDDocument document = PDDocument.load(file)) {
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
             String text = pdfTextStripper.getText(document);
@@ -53,7 +53,7 @@ public class ExtractsAccountsAndAmounts<Account, Amount> {
                 if (pekaoMatcher.matches()){
 //                    extracting = new ExtractingAccountAmountPairPekaoImp<>();
 //                    pair = extracting.getCustomPair(lines);
-                    pair = getCustomPair(lines, new ExtractingAccountAmountPairPekaoImp<>());
+                    pair = getCustomPair(lines, new ExtractingAccountAmountPairPekaoImp());
                     break;
                 }
             }
@@ -64,7 +64,7 @@ public class ExtractsAccountsAndAmounts<Account, Amount> {
         return pair;
     }
 
-    private CustomPair<Account, Amount> getCustomPair(String[] lines, ExtractingAccountAmountPair<Account, Amount> extracting){
+    private CustomPair<String, BigDecimal> getCustomPair(String[] lines, ExtractingAccountAmountPair<String, BigDecimal> extracting){
         return extracting.getCustomPair(lines);
     }
 

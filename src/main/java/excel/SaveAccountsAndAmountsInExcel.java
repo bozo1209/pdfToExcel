@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class SaveAccountsAndAmountsInExcel<Account, Amount> {
+public class SaveAccountsAndAmountsInExcel {
 
-    public void saveInExcel(ArrayList<CustomPair<Account, Amount>> accountsAndAmountsList, String path){
+    public void saveInExcel(ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList, String path){
         Workbook workbook = addValuesToExcel(createExcel(), accountsAndAmountsList);
         saveExcel(path, workbook);
     }
@@ -31,19 +31,19 @@ public class SaveAccountsAndAmountsInExcel<Account, Amount> {
         return workbook;
     }
 
-    private Workbook addValuesToExcel(Workbook workbook, ArrayList<CustomPair<Account, Amount>> accountsAndAmountsList){
+    private Workbook addValuesToExcel(Workbook workbook, ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList){
         Sheet sheet = workbook.getSheet("accounts");
         Row row;
         Cell cell;
         FormulaEvaluator formulaEvaluator = workbook.getCreationHelper().createFormulaEvaluator();
         int rowNumber = 1;
-        for (CustomPair<Account, Amount> pair : accountsAndAmountsList){
+        for (CustomPair<String, BigDecimal> pair : accountsAndAmountsList){
             row = sheet.createRow(rowNumber);
             cell = row.createCell(0);
             cell.setCellValue("'" + pair.getAccount());
             cell = row.createCell(1);
-//            cell.setCellValue("" + pair.getAmount());
-            cell.setCellFormula("VALUE(" + pair.getAmount() + ")");
+            cell.setCellValue(pair.getAmount().doubleValue());
+//            cell.setCellFormula("VALUE(" + pair.getAmount() + ")");
 //            formulaEvaluator.evaluate(cell);
             rowNumber++;
         }

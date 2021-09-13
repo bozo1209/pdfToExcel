@@ -10,10 +10,10 @@ import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExtractingAccountAmountPairPekaoImp<Account, Amount> implements ExtractingAccountAmountPair<Account, Amount> {
+public class ExtractingAccountAmountPairPekaoImp implements ExtractingAccountAmountPair<String, BigDecimal> {
     @Override
-    public CustomPair<Account, Amount> getCustomPair(String[] lines){
-        CustomPair<Account, Amount> pair = new CustomPairImp<>();
+    public CustomPair<String, BigDecimal> getCustomPair(String[] lines){
+        CustomPair<String, BigDecimal> pair = new CustomPairImp<>();
         String account = "account";
         String amount = "amount";
         String accountRegex = "BIEŻĄCY-PODMIOTY GOSP (?<" + account + ">\\d{2}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4})\\s[A-Z]{3}\\s*";
@@ -22,9 +22,10 @@ public class ExtractingAccountAmountPairPekaoImp<Account, Amount> implements Ext
             Matcher matcher = Pattern.compile(accountRegex + "|" + valueRegex).matcher(line);
             if (matcher.matches()){
                 if (matcher.group(account) != null){
-                    pair.setAccount((Account) matcher.group(account));
+                    pair.setAccount(matcher.group(account));
                 }else if (matcher.group(amount) != null){
-                    pair.setAmount((Amount) matcher.group(amount).replace(".", "").replace(",", "."));
+//                    pair.setAmount(matcher.group(amount).replace(".", "").replace(",", "."));
+                    pair.setAmount(new BigDecimal(matcher.group(amount).replace(".", "").replace(",", ".")));
                 }
             }
             if (pair.getAccount() != null && pair.getAmount() != null){

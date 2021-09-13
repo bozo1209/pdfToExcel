@@ -20,7 +20,7 @@ public class WriteToExcelButton extends JButton {
     }
 
     private void buttonAction(ActionEvent event){
-        SaveAccountsAndAmountsInExcel<String, BigDecimal> saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel<>();
+        SaveAccountsAndAmountsInExcel saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel();
         saveAccountsAndAmountsInExcel.saveInExcel(chooseFilesButton.getAccountsAndAmountsList(), chooseLocationButton.getLocationSavaPath());
     }
 }

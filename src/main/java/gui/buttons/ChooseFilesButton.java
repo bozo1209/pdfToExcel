@@ -27,11 +27,19 @@ public class ChooseFilesButton extends JButton {
 //        int response = fileChooser.showSaveDialog(null);
         int response2 = fileChooser.showOpenDialog(null);
         File[] files = fileChooser.getSelectedFiles();
-        ExtractsAccountsAndAmounts<String, BigDecimal> extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts<>();
+        ExtractsAccountsAndAmounts extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts();
 //        File[] files = new File[1];
 //        files[0] = file;
+//        Integer integer = Integer.getInteger("5");
+//        int integer = 5;
+//        double dddd = (double) integer;
         accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
         extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
+//        System.out.println(accountsAndAmountsList.get(0).getAccount() instanceof String);
+//        System.out.println(accountsAndAmountsList.get(0).getAmount() instanceof String);
+//        System.out.println(accountsAndAmountsList.get(0).getAccount() instanceof BigDecimal);
+//        System.out.println(accountsAndAmountsList.get(0).getAmount() instanceof BigDecimal);
+
     }
 
     public ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList() {

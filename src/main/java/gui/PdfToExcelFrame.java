@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.math.BigDecimal;
 
 public class PdfToExcelFrame extends JFrame {
 
