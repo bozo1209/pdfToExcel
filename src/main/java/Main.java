@@ -1,4 +1,5 @@
 import excel.SaveAccountsAndAmountsInExcel;
+import gui.PdfToExcelFrame;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import pdf.ExtractsAccountsAndAmounts;
@@ -15,16 +16,18 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("ddddddddddddd");
 
-        ExtractsAccountsAndAmounts<String, BigDecimal> extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts<>();
-        File[] files = new File[3];
-        files[0] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test.pdf");
-        files[1] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test2.pdf");
-        files[2] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test3.pdf");
-        ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
-        extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
+        new PdfToExcelFrame();
 
-        SaveAccountsAndAmountsInExcel<String, BigDecimal> saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel<>();
-        saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, "C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\excel\\");
+//        ExtractsAccountsAndAmounts<String, BigDecimal> extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts<>();
+//        File[] files = new File[3];
+//        files[0] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test.pdf");
+//        files[1] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test2.pdf");
+//        files[2] = new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test3.pdf");
+//        ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
+//        extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
+//
+//        SaveAccountsAndAmountsInExcel<String, BigDecimal> saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel<>();
+//        saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, "C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\excel\\");
 //        try(PDDocument document = PDDocument.load(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test.pdf"))) {
 //            PDFTextStripper pdfTextStripper = new PDFTextStripper();
 //            pdfTextStripper.setEndPage(1);
