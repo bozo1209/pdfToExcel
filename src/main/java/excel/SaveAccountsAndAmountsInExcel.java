@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import utilities.interfaces.CustomPair;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,9 +15,19 @@ import java.util.ArrayList;
 
 public class SaveAccountsAndAmountsInExcel {
 
+    private String excelName;
+
     public void saveInExcel(ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList, String path){
         Workbook workbook = addValuesToExcel(createExcel(), accountsAndAmountsList);
         saveExcel(path, workbook);
+    }
+
+    public void openExcel(String path){
+        try {
+            Desktop.getDesktop().open(new File(path + excelName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -53,7 +64,8 @@ public class SaveAccountsAndAmountsInExcel {
     }
 
     private void saveExcel(String path, Workbook workbook){
-        try(FileOutputStream outputStream = new FileOutputStream(new File(path + "temp" + LocalDateTime.now().toString().replace("-", "").replace(":", "").replace(".", "") + ".xlsx"))) {
+        excelName = "temp" + LocalDateTime.now().toString().replace("-", "").replace(":", "").replace(".", "") + ".xlsx";
+        try(FileOutputStream outputStream = new FileOutputStream(new File(path + excelName))) {
             workbook.write(outputStream);
             workbook.close();
         } catch (IOException e) {
