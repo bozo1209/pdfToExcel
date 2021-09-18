@@ -17,6 +17,7 @@ public class MyFileListModel extends DefaultListModel<File> {
     }
 
     public static void setInstanceToNull(){
+        myFileListModel.removeAllElements();
         myFileListModel = null;
     }
 

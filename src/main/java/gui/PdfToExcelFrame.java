@@ -1,7 +1,7 @@
 package gui;
 
-import gui.panel.PdfToExcelPanel;
-import gui.panel.PdfsListPanel;
+import gui.panels.PdfToExcelPanel;
+import gui.panels.PdfsListPanel;
 
 import javax.swing.*;
 import java.awt.*;

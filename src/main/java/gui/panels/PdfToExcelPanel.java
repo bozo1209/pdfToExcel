@@ -1,4 +1,4 @@
-package gui.panel;
+package gui.panels;
 
 import gui.buttons.ChooseFilesButton;
 //import gui.buttons.ChooseLocationButton;
@@ -6,8 +6,6 @@ import gui.buttons.WriteToExcelButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
 
 public class PdfToExcelPanel extends JPanel {
 
