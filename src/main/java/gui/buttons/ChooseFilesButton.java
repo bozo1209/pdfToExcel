@@ -1,14 +1,16 @@
 package gui.buttons;
 
+import gui.listModel.MyFileListModel;
 import pdf.ExtractsAccountsAndAmounts;
 import utilities.interfaces.CustomPair;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class ChooseFilesButton extends JButton {
 
@@ -21,6 +23,7 @@ public class ChooseFilesButton extends JButton {
     }
 
     private void buttonAction(ActionEvent event){
+        DefaultListModel<File> listModel = new DefaultListModel<>();
         System.out.println("tesssssssssssssst");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
@@ -28,8 +31,20 @@ public class ChooseFilesButton extends JButton {
 //        int response = fileChooser.showSaveDialog(null);
 //        int response2 = fileChooser.showOpenDialog(null);
         fileChooser.showOpenDialog(null);
-        File[] files = fileChooser.getSelectedFiles();
-        ExtractsAccountsAndAmounts extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts();
+//        File[] files = fileChooser.getSelectedFiles();
+//        File[] files = fileChooser.getSelectedFiles();
+//        listModel.addAll(Arrays.stream(fileChooser.getSelectedFiles()).collect(Collectors.toList()));
+//        System.out.println(listModel.get(1).getAbsolutePath());
+//        MyListModel<File> fileMyListModel = new MyListModel<>();
+//        MyFileListModel fileMyFileListModel = MyFileListModel.getInstance();
+//        fileMyFileListModel.addAll(Arrays.stream(fileChooser.getSelectedFiles()).collect(Collectors.toList()));
+        MyFileListModel.getInstance().addAll(Arrays.stream(fileChooser.getSelectedFiles()).collect(Collectors.toList()));
+//        File[] files1 = fileMyFileListModel.toArray();
+//        for (File f : files1){
+//            System.out.println(f.getAbsolutePath());
+//            System.out.println(f.getName());
+//        }
+//        ExtractsAccountsAndAmounts extractsAccountsAndAmounts = new ExtractsAccountsAndAmounts();
 //        String deskPath1 = System.getProperty("user.home") + File.separator + "Desktop";
 //        System.out.println(deskPath1);
 //        printContentOfDirectory(deskPath1);
@@ -41,8 +56,8 @@ public class ChooseFilesButton extends JButton {
 //        Integer integer = Integer.getInteger("5");
 //        int integer = 5;
 //        double dddd = (double) integer;
-        accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
-        extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
+//        accountsAndAmountsList = extractsAccountsAndAmounts.getAccountsAndAmountsList(files);
+//        extractsAccountsAndAmounts.printAccountsAndAmounts(accountsAndAmountsList);
 //        System.out.println(accountsAndAmountsList.get(0).getAccount() instanceof String);
 //        System.out.println(accountsAndAmountsList.get(0).getAmount() instanceof String);
 //        System.out.println(accountsAndAmountsList.get(0).getAccount() instanceof BigDecimal);

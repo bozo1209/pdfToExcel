@@ -1,4 +1,4 @@
-package gui;
+package gui.panel;
 
 import gui.buttons.ChooseFilesButton;
 //import gui.buttons.ChooseLocationButton;
@@ -20,7 +20,8 @@ public class PdfToExcelPanel extends JPanel {
 
         chooseFilesButton = new ChooseFilesButton();
 //        chooseLocationButton = new ChooseLocationButton();
-        writeToExcelButton = new WriteToExcelButton(chooseFilesButton
+        writeToExcelButton = new WriteToExcelButton(
+//                chooseFilesButton
 //                , chooseLocationButton
         );
 

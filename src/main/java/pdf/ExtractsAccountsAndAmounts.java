@@ -57,7 +57,7 @@ public class ExtractsAccountsAndAmounts {
                     break;
                 }
             }
-            System.out.println(lines);
+//            System.out.println(lines);
         }catch (IOException e){
             e.printStackTrace();
         }
