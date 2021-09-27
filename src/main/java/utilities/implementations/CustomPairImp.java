@@ -2,7 +2,6 @@ package utilities.implementations;
 
 import utilities.interfaces.CustomPair;
 
-import java.math.BigDecimal;
 
 public class CustomPairImp<Account,Amount> implements CustomPair<Account, Amount> {
 
@@ -12,10 +11,10 @@ public class CustomPairImp<Account,Amount> implements CustomPair<Account, Amount
     public CustomPairImp() {
     }
 
-    public CustomPairImp(Account account, Amount amount) {
-        this.account = account;
-        this.amount = amount;
-    }
+//    public CustomPairImp(Account account, Amount amount) {
+//        this.account = account;
+//        this.amount = amount;
+//    }
 
     @Override
     public String toString() {

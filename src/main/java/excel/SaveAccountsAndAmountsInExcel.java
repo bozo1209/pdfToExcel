@@ -6,7 +6,6 @@ import utilities.interfaces.CustomPair;
 
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -54,8 +53,6 @@ public class SaveAccountsAndAmountsInExcel {
             cell.setCellValue("'" + pair.getAccount());
             cell = row.createCell(1);
             cell.setCellValue(pair.getAmount().doubleValue());
-//            cell.setCellFormula("VALUE(" + pair.getAmount() + ")");
-//            formulaEvaluator.evaluate(cell);
             rowNumber++;
         }
         formulaEvaluator.evaluateAll();

@@ -1,11 +1,8 @@
 package utilities.implementations;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
 import utilities.interfaces.CustomPair;
 import utilities.interfaces.ExtractingAccountAmountPair;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,7 +21,6 @@ public class ExtractingAccountAmountPairPekaoImp implements ExtractingAccountAmo
                 if (matcher.group(account) != null){
                     pair.setAccount(matcher.group(account));
                 }else if (matcher.group(amount) != null){
-//                    pair.setAmount(matcher.group(amount).replace(".", "").replace(",", "."));
                     pair.setAmount(new BigDecimal(matcher.group(amount).replace(".", "").replace(",", ".")));
                 }
             }

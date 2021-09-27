@@ -1,7 +1,6 @@
 package gui.buttons;
 
 import gui.listModel.MyFileListModel;
-import pdf.ExtractsAccountsAndAmounts;
 import utilities.interfaces.CustomPair;
 
 import javax.swing.*;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
 public class ChooseFilesButton extends JButton {
 
     private final String BUTTON_TEXT = "Choose files";
-    private ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList;
+//    private ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList;
 
     public ChooseFilesButton(){
         this.setText(BUTTON_TEXT);
@@ -23,8 +22,8 @@ public class ChooseFilesButton extends JButton {
     }
 
     private void buttonAction(ActionEvent event){
-        DefaultListModel<File> listModel = new DefaultListModel<>();
-        System.out.println("tesssssssssssssst");
+//        DefaultListModel<File> listModel = new DefaultListModel<>();
+//        System.out.println("tesssssssssssssst");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
 //        fileChooser.setCurrentDirectory(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf"));
@@ -68,19 +67,19 @@ public class ChooseFilesButton extends JButton {
     /**
      * delete later
      */
-    private void printContentOfDirectory(String path){
-        File dir = new File(path);
-        File[] dirCont = dir.listFiles();
-        for (File o : dirCont){
-            if(o.isFile()){
-                System.out.printf("file: %s%n", o.getName());
-            }else if (o.isDirectory()){
-                System.out.printf("dir: %s%n", o.getName());
-            }
-        }
-    }
+//    private void printContentOfDirectory(String path){
+//        File dir = new File(path);
+//        File[] dirCont = dir.listFiles();
+//        for (File o : dirCont){
+//            if(o.isFile()){
+//                System.out.printf("file: %s%n", o.getName());
+//            }else if (o.isDirectory()){
+//                System.out.printf("dir: %s%n", o.getName());
+//            }
+//        }
+//    }
 
-    public ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList() {
-        return accountsAndAmountsList;
-    }
+//    public ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList() {
+//        return accountsAndAmountsList;
+//    }
 }

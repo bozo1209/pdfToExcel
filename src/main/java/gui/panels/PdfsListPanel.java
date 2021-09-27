@@ -1,6 +1,7 @@
 package gui.panels;
 
 
+import gui.PdfToExcelFrame;
 import gui.listModel.MyCellRenderer;
 import gui.listModel.MyFileListModel;
 
@@ -14,13 +15,16 @@ public class PdfsListPanel extends JPanel {
 
     JList<File> fileJList = new JList<>();
 //    DefaultListModel<File> listModel = new DefaultListModel<>();
-    JLabel label;
+//    JLabel label;
 
     public PdfsListPanel(){
+//        this.setSize(PdfToExcelFrame.WIDTH, PdfToExcelFrame.HEIGHT);
+        this.setLayout(new BorderLayout());
         this.setBackground(Color.RED);
+//        this.setSize(30,30);
         fileJList.setModel(MyFileListModel.getInstance());
         fileJList.setBackground(Color.LIGHT_GRAY);
-        label = new JLabel();
+//        label = new JLabel();
 //        listModel.addElement(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test.pdf"));
 //        listModel.addElement(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test2.pdf"));
 //        listModel.addElement(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test3.pdf"));
@@ -39,21 +43,26 @@ public class PdfsListPanel extends JPanel {
                 PdfsListPanel.this.mouseReleased();
             }
         });
+//        fileJList.setSize(300,300);
 //        listModel.addElement(new File("C:\\Users\\mateu\\Desktop\\Nowy folder\\pdf to excel\\pdf\\test3.pdf"));
-        this.add(new JScrollPane(fileJList));
-        this.add(label);
-        ggggggg();
+        JScrollPane jScrollPane = new JScrollPane(fileJList);
+//        jScrollPane.setSize(300,300);
+        jScrollPane.setPreferredSize(new Dimension(this.getSize()));
+        this.add(jScrollPane);
+//        this.add(new JScrollPane(fileJList));
+//        this.add(label);
+//        ggggggg();
     }
 
-    public void ggggggg(){
+//    public void ggggggg(){
 //        System.out.println(listModel.get(1).getAbsolutePath());
 //        System.out.println(listModel.getElementAt(2).getAbsolutePath());
 //        File[] objects = (File[]) listModel.toArray();
 //        Object[] objects2 = listModel.toArray();
-    }
+//    }
 
     private void mouseReleased(){
-        System.out.println(fileJList.getSelectedValue());
+//        System.out.println(fileJList.getSelectedValue());
 //        System.out.println(e.getSource());
 //        MyMouseAdaptor myMouseAdaptor = new MyMouseAdaptor();
 //        myMouseAdaptor.mouseReleased(e);
