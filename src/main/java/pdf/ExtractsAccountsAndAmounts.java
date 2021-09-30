@@ -33,9 +33,7 @@ public class ExtractsAccountsAndAmounts {
             String text = pdfTextStripper.getText(document);
             String[] lines = text.split("\n");
             for (String line : lines){
-                String s = line.toUpperCase();
-                Matcher pekaoMatcher = Pattern.compile("[a-zA-Z]* " + BankNames.PEKAO.name() + " S.A.\\s*").matcher(s);
-                if (pekaoMatcher.matches()){
+                if (Pattern.compile("[a-zA-Z]* " + BankNames.PEKAO.name() + " S.A.\\s*").matcher(line.toUpperCase()).matches()){
                     pair = getCustomPair(lines, new ExtractingAccountAmountPairPekaoImp());
                     break;
                 }
