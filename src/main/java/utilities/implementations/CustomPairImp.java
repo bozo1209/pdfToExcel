@@ -11,11 +11,6 @@ public class CustomPairImp<Account,Amount> implements CustomPair<Account, Amount
     public CustomPairImp() {
     }
 
-//    public CustomPairImp(Account account, Amount amount) {
-//        this.account = account;
-//        this.amount = amount;
-//    }
-
     @Override
     public String toString() {
         return "CustomPairImp{" +

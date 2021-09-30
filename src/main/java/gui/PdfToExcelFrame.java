@@ -8,23 +8,15 @@ import java.awt.*;
 
 public class PdfToExcelFrame extends JFrame {
 
-    private final String APP_TITLE = "Extracting Accounts and amounts from pdf to excel";
-    private PdfToExcelPanel pdfToExcelPanel;
-    private PdfsListPanel pdfsListPanel;
-
     public PdfToExcelFrame(){
+        String APP_TITLE = "Extracting Accounts and amounts from pdf to excel";
         this.setTitle(APP_TITLE);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500, 500);
+        this.setSize(300, 500);
         this.setLayout(new BorderLayout());
-
-        pdfToExcelPanel = new PdfToExcelPanel();
-        pdfsListPanel = new PdfsListPanel();
-
-        this.add(pdfToExcelPanel, BorderLayout.NORTH);
-        this.add(pdfsListPanel, BorderLayout.CENTER);
-
-//        this.pack();
+        this.add(new PdfToExcelPanel(), BorderLayout.NORTH);
+        this.add(new PdfsListPanel(), BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 }

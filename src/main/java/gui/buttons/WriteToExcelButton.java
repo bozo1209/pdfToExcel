@@ -9,14 +9,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.math.BigDecimal;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 
 public class WriteToExcelButton extends JButton {
 
-    private final String BUTTON_TEXT = "Write to excel";
-    private ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList;
-
     public WriteToExcelButton(){
+        String BUTTON_TEXT = "Write to excel";
         this.setText(BUTTON_TEXT);
         this.addActionListener(this::buttonAction);
     }
@@ -24,17 +23,17 @@ public class WriteToExcelButton extends JButton {
     private void buttonAction(ActionEvent event){
         String location = getLocationToSave();
         SaveAccountsAndAmountsInExcel saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel();
-        accountsAndAmountsList = getAccountsAndAmountsList(MyFileListModel.getInstance().toArray());
+        ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = getAccountsAndAmountsList(MyFileListModel.getInstance().toArray());
         saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, location);
         saveAccountsAndAmountsInExcel.openExcel(location);
-        MyFileListModel.setInstanceToNull();
+        MyFileListModel.removeElements();
     }
 
     private String getLocationToSave(){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         fileChooser.showOpenDialog(null);
-        return fileChooser.getSelectedFile().getAbsolutePath() + "\\";
+        return fileChooser.getSelectedFile().getAbsolutePath() + FileSystems.getDefault().getSeparator();
     }
 
     private ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList(File[] files){
