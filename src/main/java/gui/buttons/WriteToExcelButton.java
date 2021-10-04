@@ -14,8 +14,10 @@ import java.util.ArrayList;
 
 public class WriteToExcelButton extends JButton {
 
+    private final String CANCEL = "CANCEL";
+
     public WriteToExcelButton(){
-        String BUTTON_TEXT = "Write to excel";
+        String BUTTON_TEXT = "Write to pdf";
         this.setText(BUTTON_TEXT);
         this.addActionListener(this::buttonAction);
     }
@@ -24,16 +26,21 @@ public class WriteToExcelButton extends JButton {
         String location = getLocationToSave();
         SaveAccountsAndAmountsInExcel saveAccountsAndAmountsInExcel = new SaveAccountsAndAmountsInExcel();
         ArrayList<CustomPair<String, BigDecimal>> accountsAndAmountsList = getAccountsAndAmountsList(MyFileListModel.getInstance().toArray());
-        saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, location);
-        saveAccountsAndAmountsInExcel.openExcel(location);
-        MyFileListModel.removeElements();
+        if (!location.equals(CANCEL)){
+            saveAccountsAndAmountsInExcel.saveInExcel(accountsAndAmountsList, location);
+            saveAccountsAndAmountsInExcel.openExcel(location);
+            MyFileListModel.removeElements();
+        }
     }
 
     private String getLocationToSave(){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.showOpenDialog(null);
-        return fileChooser.getSelectedFile().getAbsolutePath() + FileSystems.getDefault().getSeparator();
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION){
+            return fileChooser.getSelectedFile().getAbsolutePath() + FileSystems.getDefault().getSeparator();
+        }
+        return CANCEL;
     }
 
     private ArrayList<CustomPair<String, BigDecimal>> getAccountsAndAmountsList(File[] files){

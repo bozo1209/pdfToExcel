@@ -5,6 +5,7 @@
 ## Table of content
 * [General Info](#general-info)
 * [Technologies Used](#technologies-used)
+* [Setup](#setup)
 * [Project Status](#project-status)
 
 ## General Info
@@ -16,6 +17,13 @@ Project goal is to shorten time needed to create list of accounts and its amount
 - Swing
 - Apache PdfBox - version 2.0.24
 - Apache POI - version 5.0.0
+
+## Setup
+- Check if you have Java on your machine.
+- If not download it from [Java site](https://www.java.com/en/download/manual.jsp).
+- Download pdfToExcel app from [releases](https://github.com/bozo1209/pdfToExcel/releases).
+- Double click .exe file.
+- Now app is running.
 
 ## Project Status
 Project is: _in progress_.\
