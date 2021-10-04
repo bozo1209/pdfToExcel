@@ -19,11 +19,11 @@ Project goal is to shorten time needed to create list of accounts and its amount
 - Apache POI - version 5.0.0
 
 ## Setup
-- Check if you have Java on your machine.
-- If not download it from [Java site](https://www.java.com/en/download/manual.jsp).
-- Download pdfToExcel app from [releases](https://github.com/bozo1209/pdfToExcel/releases).
-- Double click .exe file.
-- Now app is running.
+- Check if you have Java on your machine
+- If not download it from [Java site](https://www.java.com/en/download/manual.jsp)
+- Download pdfToExcel app from [releases](https://github.com/bozo1209/pdfToExcel/releases)
+- Double click .exe file
+- Now app is running
 
 ## Project Status
 Project is: _in progress_.\

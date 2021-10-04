@@ -17,7 +17,7 @@ public class WriteToExcelButton extends JButton {
     private final String CANCEL = "CANCEL";
 
     public WriteToExcelButton(){
-        String BUTTON_TEXT = "Write to pdf";
+        String BUTTON_TEXT = "Write to Excel";
         this.setText(BUTTON_TEXT);
         this.addActionListener(this::buttonAction);
     }
