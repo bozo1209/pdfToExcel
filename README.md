@@ -26,6 +26,7 @@ Project goal is to shorten time needed to create list of accounts and its amount
 - Now app is running
 
 ## Project Status
-Project is: _in progress_.\
+Project is: _closed_.\
+Project was changed from desktop app to web app. Web app repository is available at link: https://github.com/bozo1209/pdfToExcelWebapp. \
 Details of what is currently to do, in progress or done is at a link: https://github.com/users/bozo1209/projects/2
 
